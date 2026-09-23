@@ -1,0 +1,7 @@
+{
+  "Enabled": false,
+  "BaseUrl": "http://localhost:11434",
+  "Model": "qwen2.5:1.5b",
+  "ApiKey": "",
+  "TimeoutSeconds": 20
+}
