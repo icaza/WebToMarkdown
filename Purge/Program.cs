@@ -3,7 +3,7 @@ using System.IO;
 
 const string TargetFolderName = "EnvironmentWebview";
 const string LogFileName      = "purge-error.log";
-const int    DelayMs          = 3000; // 3 secondes
+const int    DelayMs          = 3000;
 
 try
 {
@@ -11,9 +11,7 @@ try
 
     if (Directory.Exists(targetDir))
     {
-        // Laisse le temps au processus parent (WebView2) de libérer ses handles
         await Task.Delay(DelayMs);
-
         ForceDeleteDirectory(targetDir);
     }
 }
@@ -28,14 +26,12 @@ return 0;
 
 static void ForceDeleteDirectory(string path)
 {
-    // Retire les attributs ReadOnly/Hidden/System qui bloqueraient la suppression
     foreach (var file in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories))
     {
         try { File.SetAttributes(file, FileAttributes.Normal); }
-        catch { /* on tentera quand même */ }
+        catch {}
     }
 
-    // Le dossier peut encore être verrouillé quelques instants : on retente plusieurs fois
     const int maxAttempts = 5;
     for (int attempt = 1; attempt <= maxAttempts; attempt++)
     {
@@ -54,7 +50,6 @@ static void ForceDeleteDirectory(string path)
         }
     }
 
-    // Dernière tentative : suppression manuelle puis dossier
     foreach (var file in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories))
     {
         try { File.Delete(file); } catch { }
@@ -76,7 +71,5 @@ static void WriteLog(Exception ex)
         File.AppendAllText(logPath, line);
     }
     catch
-    {
-        // Échec silencieux, conformément à l'exigence
-    }
+    {}
 }
