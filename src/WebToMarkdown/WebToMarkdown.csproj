@@ -20,7 +20,7 @@
     <StartupObject></StartupObject>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ApplicationIcon>icoico.ico</ApplicationIcon>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Company>ICAZA MEDIA</Company>
     <Authors>ICAZA</Authors>
     <Description>Windows command-line web extraction</Description>
@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4191.47" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />
   </ItemGroup>
 
   <ItemGroup>
