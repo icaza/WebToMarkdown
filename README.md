@@ -4,6 +4,11 @@ Windows command-line web extraction utility built with C# 10+ / .NET 10 and Micr
 
 The process has no visible console or GUI. It accepts a URL, renders the page with WebView2, extracts the rendered DOM rather than the HTML source, and writes a Markdown report into `reports_`.
 
+## Part of the Ostium toolset
+
+OstiumIAtrad is one of the Ostium tools — see also
+[Ostium OSINT Browser](https://github.com/icaza/Ostium-Osint-Browser).
+
 ## Usage
 
 ```text
@@ -40,13 +45,13 @@ For Ollama, the application automatically targets `/v1/chat/completions` when `B
 Reports are written to:
 
 ```text
-reports_\\
+reports_\
 ```
 
 Application errors and diagnostics are written to:
 
 ```text
-logs_\\app.log
+logs_\app.log
 ```
 
 WebView2 uses a temporary per-run profile under the Windows temporary directory. The profile is deleted after the run so cookies, cache and other browser state are not retained between executions.
@@ -73,13 +78,17 @@ The webpage is treated as untrusted input. The AI prompt explicitly separates pa
 
 ```powershell
 dotnet restore
-dotnet build .\\WebToMarkdown.sln -c Release -p:Platform=x64
+dotnet build .\WebToMarkdown.sln -c Release -p:Platform=x64
 ```
 
 ## Publish self-contained
 
 ```powershell
-dotnet publish .\\src\\WebToMarkdown\\WebToMarkdown.csproj -c Release -r win-x64 --self-contained true
+dotnet publish .\src\WebToMarkdown\WebToMarkdown.csproj -c Release -r win-x64 --self-contained true
 ```
 
 The WebView2 Runtime itself is not bundled by this project. The Evergreen Runtime is the expected deployment model.
+
+## License
+
+Released under the [MIT License](LICENSE).
