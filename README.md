@@ -6,7 +6,7 @@ The process has no visible console or GUI. It accepts a URL, renders the page wi
 
 ## Part of the Ostium toolset
 
-OstiumIAtrad is one of the Ostium tools — see also
+WebToMarkdown is one of the Ostium tools — see also
 [Ostium OSINT Browser](https://github.com/icaza/Ostium-Osint-Browser).
 
 ## Usage
